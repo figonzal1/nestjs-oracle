@@ -13,18 +13,12 @@ npm install
 npm run start:dev         # crea las tablas y arranca en http://localhost:3000
 ```
 
-Swagger: http://localhost:3000/api
+Documentacion de la API en Swagger: http://localhost:3000/api
 
 Esperar a que el contenedor esté `healthy` antes de arrancar la app:
 
 ```bash
 docker compose ps
-```
-
-## Tests end-to-end (contra la Oracle real de Docker)
-
-```bash
-npm run test:e2e
 ```
 
 ## Cómo está armado
