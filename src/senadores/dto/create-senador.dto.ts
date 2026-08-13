@@ -12,7 +12,10 @@ export class CreateSenadorDto {
   @MaxLength(200)
   partido: string;
 
-  @ApiProperty({ example: 1, description: 'ID de una región existente (ver GET /regiones)' })
+  @ApiProperty({
+    example: 1,
+    description: 'ID de una región existente (ver GET /regiones)',
+  })
   @IsInt()
   regionId: number;
 }

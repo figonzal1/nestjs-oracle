@@ -13,10 +13,14 @@ describe('Senadores (e2e)', () => {
     }).compile();
 
     app = moduleFixture.createNestApplication();
-    app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
+    app.useGlobalPipes(
+      new ValidationPipe({ whitelist: true, transform: true }),
+    );
     await app.init();
 
-    const regionesRes = await request(app.getHttpServer()).get('/regiones').expect(200);
+    const regionesRes = await request(app.getHttpServer())
+      .get('/regiones')
+      .expect(200);
     regionId = regionesRes.body[0].id;
   });
 

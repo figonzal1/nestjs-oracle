@@ -26,18 +26,22 @@ export class SenadoresService {
   /**
    * Crear un senador
    * @param dto Objeto con los datos del senador a crear
-   * @returns 
+   * @returns El senador creado, con su región resuelta
    */
   async create(dto: CreateSenadorDto): Promise<Senador> {
     const region = await this.resolveRegion(dto.regionId);
     return this.senadoresRepo.save(
-      this.senadoresRepo.create({ nombre: dto.nombre, partido: dto.partido, region }),
+      this.senadoresRepo.create({
+        nombre: dto.nombre,
+        partido: dto.partido,
+        region,
+      }),
     );
   }
 
   /**
    * Buscar todos los senadores
-   * @returns 
+   * @returns Lista completa de senadores
    */
   findAll(): Promise<Senador[]> {
     return this.senadoresRepo.find();
@@ -45,8 +49,8 @@ export class SenadoresService {
 
   /**
    * Buscar un senador por su ID
-   * @param idSenador 
-   * @returns 
+   * @param idSenador ID del senador
+   * @returns El senador encontrado
    */
   async findOne(idSenador: number): Promise<Senador> {
     const senador = await this.senadoresRepo.findOneBy({ id: idSenador });
@@ -58,9 +62,9 @@ export class SenadoresService {
 
   /**
    * Actualizar un senador por su ID
-   * @param idSenador 
-   * @param dto 
-   * @returns 
+   * @param idSenador ID del senador
+   * @param dto Campos a actualizar (parciales)
+   * @returns El senador actualizado
    */
   async update(idSenador: number, dto: UpdateSenadorDto): Promise<Senador> {
     const senador = await this.findOne(idSenador);
@@ -74,7 +78,7 @@ export class SenadoresService {
 
   /**
    * Eliminar un senador por su ID
-   * @param idSenador 
+   * @param idSenador ID del senador
    */
   async remove(idSenador: number): Promise<void> {
     const senador = await this.findOne(idSenador);
