@@ -14,7 +14,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         autoLoadEntities: true,
         // synchronize: SOLO para esta maqueta. En un Oracle real se usan
         // migraciones de TypeORM; dejar esto en true machaca el esquema.
-        synchronize: true,
+        synchronize: false,
       }),
     }),
   ],
